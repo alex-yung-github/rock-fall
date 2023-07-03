@@ -27,17 +27,17 @@ public class RockShot : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && p_rock_bullets > 0)
         {
             screenPosition = Input.mousePosition;
-            Object obj = Instantiate(bulletPrefab, shootingPointLeft.position, transform.rotation);
-            obj.GetComponent<Rigidbody2D>().velocity = transform.rigidbody.velocity * 3;
+            GameObject obj = Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
+            obj.GetComponent<Rigidbody2D>().velocity = transform.GetComponent<Rigidbody2D>().velocity * 3;
 
             if(p_rock_bullets == 2)
             {
-                frontArm.SetActive(!frontArm.activeSelf);
+                frontArm.SetActive(false);
                 p_rock_bullets -= 1;
             }
             else
             {
-                backArm.SetActive(!backArm.activeSelf);
+                backArm.SetActive(false);
                 p_rock_bullets -= 1;
             }
 
@@ -47,12 +47,14 @@ public class RockShot : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if(p_rock_bullets < 2)
+        if(p_rock_bullets == 0)
         {
-            if(p_rock_recharge_count >= 500)
+            if(p_rock_recharge_count >= 300)
             {
+                frontArm.SetActive(true);
+                backArm.SetActive(true);
                 p_rock_recharge_count = 0;
-                p_rock_bullets += 1;
+                p_rock_bullets += 2;
             }
             else
             {
