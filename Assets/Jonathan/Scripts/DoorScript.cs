@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class DoorScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool isInRange;
-    public KeyCode interactKey;
+    public bool isInRange; // is player in range of door?
+    public KeyCode interactKey; // key for user to press
+    public string interactName;
     void Start()
     {
         
@@ -21,7 +22,7 @@ public class DoorScript : MonoBehaviour
         {
             if (Input.GetKeyDown(interactKey))
             {
-                SceneManager.LoadScene("Inside House");
+                SceneManager.LoadScene(interactName); // new Scee
                 
             }
         }
