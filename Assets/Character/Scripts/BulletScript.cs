@@ -7,7 +7,7 @@ public class BulletScript : MonoBehaviour
     private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
-    public float force;
+    public float force; //this variable can be changed within Unity to tune bullet velocity
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class BulletScript : MonoBehaviour
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePos - transform.position;
         Vector3 rotation = transform.position - mousePos;
-        rb.velocity = new Vector3(direction.x, direction.y) * force; //get rid of .normalized to scale with mouse pos
+        rb.velocity = new Vector3(direction.x, direction.y) * force; // .normalized after parenthesis decides whether or not strength scales
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
     }
