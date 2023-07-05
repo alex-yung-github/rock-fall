@@ -7,6 +7,7 @@ public class RockShot : MonoBehaviour
     public Transform shootingPoint;
     public GameObject bulletPrefab;
     private int p_rock_bullets = 2;
+    public bool canFire;
 
     public GameObject frontArm;
     public GameObject backArm;
@@ -26,10 +27,11 @@ public class RockShot : MonoBehaviour
     { 
         if (Input.GetMouseButtonDown(0) && p_rock_bullets > 0)
         {
+            /*
             screenPosition = Input.mousePosition;
             GameObject obj = Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
             obj.GetComponent<Rigidbody2D>().velocity = transform.GetComponent<Rigidbody2D>().velocity * 3;
-
+            */
             if(p_rock_bullets == 2)
             {
                 frontArm.SetActive(false);
@@ -39,6 +41,7 @@ public class RockShot : MonoBehaviour
             {
                 backArm.SetActive(false);
                 p_rock_bullets -= 1;
+                canFire = false;
             }
 
             
@@ -51,6 +54,7 @@ public class RockShot : MonoBehaviour
         {
             if(p_rock_recharge_count >= 300)
             {
+                canFire = true;
                 frontArm.SetActive(true);
                 backArm.SetActive(true);
                 p_rock_recharge_count = 0;
