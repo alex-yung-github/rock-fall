@@ -14,6 +14,7 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         textComponent.text = string.Empty;
+        gameObject.SetActive(true);
         StartDialogue();
     }
 
