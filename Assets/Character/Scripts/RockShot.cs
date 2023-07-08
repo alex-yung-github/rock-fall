@@ -12,6 +12,9 @@ public class RockShot : MonoBehaviour
     public GameObject frontArm;
     public GameObject backArm;
 
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+
     public Vector2 screenPosition;
     private int p_rock_recharge_count = 0;
 
@@ -50,7 +53,7 @@ public class RockShot : MonoBehaviour
         if(p_rock_bullets == 0)
         {
             canFire = false;
-            if(p_rock_recharge_count >= 50)
+            if(p_rock_recharge_count >= 50 && Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer))
             {
                 canFire = true; //this variable is sent to the Shooting.cs file to determine if bullet can be instantiated
                 frontArm.SetActive(true);

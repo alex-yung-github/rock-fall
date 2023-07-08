@@ -11,18 +11,21 @@ public class PlayerMovement : MonoBehaviour
     private Camera mainCam;
     private Vector3 mousePos;
     public RockShot rockShot;
+    private int boostCounter;
     //private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private int recoilForce; //can be tuned in Unity to improve usability
+    [SerializeField] private int maxSpeed;
 
 
     // Start is called before the first frame update
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        boostCounter = 0;
     }
 
     void Update()
@@ -38,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(Input.GetMouseButtonDown(0) && rockShot.canFire)
         {
+            boostCounter = 5;
             mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
             Vector3 direction = mousePos - transform.position;
             Vector3 rotation = transform.position - mousePos;
@@ -48,7 +52,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontal * speed + rb.velocity.x, rb.velocity.y);
+        if(rb.velocity.x > maxSpeed && boostCounter == 0)
+        {
+            rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
+        }
+        if(rb.velocity.x < maxSpeed * -1 && boostCounter == 0)
+        {
+            rb.velocity = new Vector2(maxSpeed * -1, rb.velocity.y);
+        }
+        if(boostCounter > 0)
+        {
+            boostCounter -= 1;
+        }
     }
     
     private bool IsGrounded()
