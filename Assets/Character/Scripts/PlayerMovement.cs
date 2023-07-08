@@ -53,6 +53,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed + rb.velocity.x, rb.velocity.y);
+        if(horizontal == 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x * 0.7f, rb.velocity.y);
+        }
         if(rb.velocity.x > maxSpeed && boostCounter == 0)
         {
             rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
