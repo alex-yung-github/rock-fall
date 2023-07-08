@@ -41,10 +41,7 @@ public class RockShot : MonoBehaviour
             {
                 backArm.SetActive(false);
                 p_rock_bullets -= 1;
-                canFire = false;
             }
-
-            
         }
     }
 
@@ -52,7 +49,8 @@ public class RockShot : MonoBehaviour
     {
         if(p_rock_bullets == 0)
         {
-            if(p_rock_recharge_count >= 150)
+            canFire = false;
+            if(p_rock_recharge_count >= 50)
             {
                 canFire = true; //this variable is sent to the Shooting.cs file to determine if bullet can be instantiated
                 frontArm.SetActive(true);

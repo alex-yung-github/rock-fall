@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
             mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
             Vector3 direction = mousePos - transform.position;
             Vector3 rotation = transform.position - mousePos;
-            rb.velocity = new Vector3(direction.x * -1, direction.y * - 1) * recoilForce; // .normalized after parenthesis decides whether or not strength scales
+            rb.velocity = new Vector3(direction.x * -1, direction.y * - 1).normalized * recoilForce; // .normalized after parenthesis decides whether or not strength scales
         }
         //Flip();
     }
