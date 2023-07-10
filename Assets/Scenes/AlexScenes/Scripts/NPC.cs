@@ -31,6 +31,7 @@ public class NPC : MonoBehaviour
         if(playerIsClose && Input.GetKeyDown("e") && otherPanelsUnactive()){
             if(dialoguePanel.activeInHierarchy){
                 dialogueText.text = string.Empty;
+                StopAllCoroutines();
                 NextLine();
             }
             else{

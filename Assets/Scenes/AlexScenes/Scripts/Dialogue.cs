@@ -40,6 +40,7 @@ public class Dialogue : MonoBehaviour
         index = 0;
         StartCoroutine(TypeLine());
     }
+    
     IEnumerator TypeLine()
     {
         foreach (char c in lines[index].ToCharArray()) 
