@@ -10,6 +10,10 @@ public class AttributesManager : MonoBehaviour
     public void takeDamage(int amount)
     {
         health -= amount;
+        if(health == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void DealDamage(GameObject target)
