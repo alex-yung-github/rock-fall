@@ -28,7 +28,8 @@ public class Shooting : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0) && rockShot.canFire)
         {
-            Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            var clone = Instantiate(bullet, bulletTransform.position, Quaternion.identity); //create bullet clone
+            Destroy(clone, 5); //destroy it after 5 seconds
         }
     }
 }
