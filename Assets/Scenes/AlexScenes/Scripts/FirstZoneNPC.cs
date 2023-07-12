@@ -25,6 +25,7 @@ public class FirstZoneIslandNPC : MonoBehaviour
     public string[] postBossDialogue1;
     public string[] postBossDialogue2;
     public BossProgressCheck playerBossChecker;
+    public GameObject portalSpawner;
 
     
     void Start(){
@@ -48,6 +49,10 @@ public class FirstZoneIslandNPC : MonoBehaviour
                 dialoguePanel.SetActive(true);
                 StartCoroutine(Typing());
             }
+        }
+
+        if(portalSpawner == null && playerBeatFirstBoss){
+            portalSpawner.SetActive(true);
         }
     }
 
