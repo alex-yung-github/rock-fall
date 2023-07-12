@@ -12,7 +12,7 @@ public class AttributesManager : MonoBehaviour
         health -= amount;
         if(health == 0)
         {
-            Destroy(this.gameObject);
+            perish();
         }
     }
 
@@ -23,6 +23,16 @@ public class AttributesManager : MonoBehaviour
         {
             atm.takeDamage(attack);
         }
+    }
+    void perish()
+    {
+        if(!this.gameObject.CompareTag("Player"))
+        {
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
+        }
+        Destroy(this.gameObject);
+    
+
     }
 }
 
