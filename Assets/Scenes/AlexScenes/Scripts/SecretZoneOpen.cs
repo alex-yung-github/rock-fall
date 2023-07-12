@@ -16,13 +16,14 @@ public class SecretZoneOpen : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Player"){
             ShopKeeper.SetActive(true);
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
+            GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
 
         }
     }
     private void OnTriggerExit2D(Collider2D other){
         if(other.tag == "Player"){
-            ShopKeeper.SetActive(false);
+            GetComponent<Renderer>().enabled = GetComponent<Renderer>().enabled;
             gameObject.SetActive(true);
         }
     }
