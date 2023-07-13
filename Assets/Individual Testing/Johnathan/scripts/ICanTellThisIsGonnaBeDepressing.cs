@@ -36,7 +36,7 @@ public class ICanTellThisIsGonnaBeDepressing : MonoBehaviour
         }
        
     }
-    void patrolling() { 
+    public void patrolling() { 
         Vector2 point = currentPoint.position - transform.position;
         if (currentPoint == pointB.transform)
         {
