@@ -9,17 +9,14 @@ public class Item : MonoBehaviour
     public string description;
     public Sprite icon;
     public bool pickedUp;
-    public PlayerMovement playerMovement;
-
-    void Start()
-    {
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-    }
+    PlayerMovement playerMovement;
     
     public void ItemUsage()
     {
         if(type == "Charm")
         {
+            playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+            Debug.Log("this part ran");
             switch(ID)
             {
                 case 0:
