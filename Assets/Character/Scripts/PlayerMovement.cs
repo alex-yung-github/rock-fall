@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private int recoilForce; //can be tuned in Unity to improve usability
-    [SerializeField] private int maxSpeed;
+    public int maxSpeed;
 
 
     // Start is called before the first frame update
