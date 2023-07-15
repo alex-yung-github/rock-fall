@@ -16,7 +16,6 @@ public class Item : MonoBehaviour
         if(type == "Charm")
         {
             playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-            Debug.Log("this part ran");
             switch(ID)
             {
                 case 0:
