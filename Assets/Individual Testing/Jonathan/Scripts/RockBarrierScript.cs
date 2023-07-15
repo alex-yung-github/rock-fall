@@ -22,6 +22,7 @@ public class RockBarrierScript : MonoBehaviour
         if (isInRange && Input.GetKeyDown("e"))
         {
             barrier.SetActive(false);
+            // swirl.SetActive(false);
             Debug.Log("barrier is gone!");
         }
     }
