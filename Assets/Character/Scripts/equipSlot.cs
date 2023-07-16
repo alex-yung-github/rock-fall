@@ -17,7 +17,13 @@ public class equipSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        
+        empty = true;
+        item = null;
+        ID = 0;
+        type = "";
+        description = "";
+        icon = null;
+        UpdateSlot();
     }
     void Start()
     {
