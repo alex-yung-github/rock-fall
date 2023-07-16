@@ -20,24 +20,21 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         if(type == "Charm")
         {
-            Debug.Log("entered");
+            
             equipSlots = GameObject.FindGameObjectsWithTag("equipSlot");
             foreach(GameObject slot in equipSlots)
             {
-                if(slot.GetComponent<equipSlot>().empty == false)
-                {
-                    break;
-                }
-                else
+                Debug.Log(slot.GetComponent<equipSlot>().empty);
+                if(slot.GetComponent<equipSlot>().empty == true)
                 {
                     slot.GetComponent<Image>().sprite = icon;
                     
                     item.transform.parent = slot.transform;
                     item.SetActive(false);
-
+                    Debug.Log("assigned to slot " + slot.name);
                     slot.GetComponent<equipSlot>().UpdateSlot();
                     slot.GetComponent<equipSlot>().empty = false;
-                    return;
+                    break;
                 }
             }
         }

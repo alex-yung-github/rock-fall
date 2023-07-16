@@ -19,7 +19,10 @@ public class equipSlot : MonoBehaviour, IPointerClickHandler
     {
         
     }
-
+    void Start()
+    {
+        empty = true;
+    }
     public void UpdateSlot()
     {
         this.GetComponent<Image>().sprite = icon;
