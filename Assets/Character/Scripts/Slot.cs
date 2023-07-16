@@ -24,13 +24,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler
             equipSlots = GameObject.FindGameObjectsWithTag("equipSlot");
             foreach(GameObject slot in equipSlots)
             {
-                Debug.Log(slot.GetComponent<equipSlot>().empty);
+                //Debug.Log(slot.GetComponent<equipSlot>().empty);
                 if(slot.GetComponent<equipSlot>().empty == true)
                 {
-                    slot.GetComponent<Image>().sprite = icon;
-                    
                     item.transform.parent = slot.transform;
-                    item.SetActive(false);
+                    slot.GetComponent<equipSlot>().icon = icon;
+
                     Debug.Log("assigned to slot " + slot.name);
                     slot.GetComponent<equipSlot>().UpdateSlot();
                     slot.GetComponent<equipSlot>().empty = false;

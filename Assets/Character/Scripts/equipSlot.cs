@@ -21,10 +21,11 @@ public class equipSlot : MonoBehaviour, IPointerClickHandler
     }
     void Start()
     {
+        slotIconGO = transform.GetChild(0);
         empty = true;
     }
     public void UpdateSlot()
     {
-        this.GetComponent<Image>().sprite = icon;
+        slotIconGO.GetComponent<Image>().sprite = icon;
     }
 }
