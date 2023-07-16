@@ -28,9 +28,15 @@ public class Slot : MonoBehaviour, IPointerClickHandler
                 if(slot.GetComponent<equipSlot>().empty == true)
                 {
                     item.transform.parent = slot.transform;
-                    slot.GetComponent<equipSlot>().icon = icon;
 
-                    Debug.Log("assigned to slot " + slot.name);
+                    slot.GetComponent<equipSlot>().item = item;
+                    slot.GetComponent<equipSlot>().icon = icon;
+                    slot.GetComponent<equipSlot>().type = type;
+                    slot.GetComponent<equipSlot>().ID = ID;
+                    slot.GetComponent<equipSlot>().description = description;
+
+                    //Debug.Log("assigned to slot " + slot.name);
+
                     slot.GetComponent<equipSlot>().UpdateSlot();
                     slot.GetComponent<equipSlot>().empty = false;
                     break;
