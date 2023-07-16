@@ -83,7 +83,7 @@ public class Inventory : MonoBehaviour
                 slot[i].GetComponent<Slot>().empty = false;
             }
 
-            return;
+            return; // i dont get why this goes here but tutorial guy said so
         }
     }
 }
