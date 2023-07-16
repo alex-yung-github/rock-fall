@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class equipSlot : MonoBehaviour
+public class equipSlot : MonoBehaviour, IPointerClickHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject item;
+    public int ID;
+    public string type;
+    public string description;
+    public Sprite icon;
+    public bool empty;
+
+    public Transform slotIconGO;
+
+    public void OnPointerClick(PointerEventData pointerEventData)
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        slotIconGO = transform.GetChild(0);
+        empty = true;
+    }
+    public void UpdateSlot()
+    {
+        slotIconGO.GetComponent<Image>().sprite = icon;
     }
 }

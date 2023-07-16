@@ -12,12 +12,32 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public string description;
     public Sprite icon;
     public bool empty;
+    private GameObject[] equipSlots;
 
     public Transform slotIconGO;
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        UseItem();
+        if(type == "Charm")
+        {
+            
+            equipSlots = GameObject.FindGameObjectsWithTag("equipSlot");
+            foreach(GameObject slot in equipSlots)
+            {
+                //Debug.Log(slot.GetComponent<equipSlot>().empty);
+                if(slot.GetComponent<equipSlot>().empty == true)
+                {
+                    item.transform.parent = slot.transform;
+                    slot.GetComponent<equipSlot>().icon = icon;
+
+                    Debug.Log("assigned to slot " + slot.name);
+                    slot.GetComponent<equipSlot>().UpdateSlot();
+                    slot.GetComponent<equipSlot>().empty = false;
+                    break;
+                }
+            }
+        }
+        //UseItem();
     }
     private void Start()
     {
