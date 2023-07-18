@@ -17,8 +17,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private int recoilForce; //can be tuned in Unity to improve usability
-    public int maxSpeed;
+    private int recoilForce; //can be tuned in Unity to improve usability
+    private int maxSpeed;
+
+    public PlayerStats playerStats;
 
 
     // Start is called before the first frame update
@@ -26,10 +28,14 @@ public class PlayerMovement : MonoBehaviour
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         boostCounter = 0;
+        maxSpeed = playerStats.maxSpeed;
+        recoilForce = playerStats.recoilForce;
     }
 
     void Update()
     {
+        maxSpeed = playerStats.maxSpeed;
+        recoilForce = playerStats.recoilForce;
         horizontal = Input.GetAxisRaw("Horizontal");
         if(Input.GetButtonDown("Jump") && IsGrounded())
         {
