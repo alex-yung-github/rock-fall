@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
         }
         if(type == "Charm")
         {
-            playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+            playerStats = GameObject.FindGameObjectWithTag("Inventory").GetComponent<PlayerStats>();
             switch(ID)
             {
                 case 1:
