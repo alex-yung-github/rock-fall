@@ -28,7 +28,7 @@ public class RockBarrierScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("something's here?");
+   
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = true;
@@ -37,7 +37,7 @@ public class RockBarrierScript : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("something left?");
+        
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = false;
