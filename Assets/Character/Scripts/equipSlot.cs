@@ -17,8 +17,18 @@ public class equipSlot : MonoBehaviour, IPointerClickHandler
 
     public Transform slotIconGO;
 
+    [SerializeField] PlayerStats playerStats;
+
     public void OnPointerClick(PointerEventData pointerEventData)
     {
+        switch(ID)
+            {
+                case 1:
+                    playerStats.speedAltered = false;
+                    //Debug.Log("Item unequipped");
+                    break;
+            }
+
         empty = true;
         item = placeholder;
         ID = 0;

@@ -23,8 +23,9 @@ public class Item : MonoBehaviour
             switch(ID)
             {
                 case 1:
-                    playerStats.maxSpeed = playerStats.maxSpeed * 2;
-                    Debug.Log("Item used");
+                    playerStats.speedAltered = true;
+                    playerStats.maxSpeed = 60;
+                    //Debug.Log("Item used");
                     break;
             }
         }
