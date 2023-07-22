@@ -9,17 +9,23 @@ public class Item : MonoBehaviour
     public string description;
     public Sprite icon;
     public bool pickedUp;
-    PlayerMovement playerMovement;
+    PlayerStats playerStats;
     
     public void ItemUsage()
     {
+        if(type == "reset")
+        {
+
+        }
         if(type == "Charm")
         {
-            playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+            playerStats = GameObject.FindGameObjectWithTag("Inventory").GetComponent<PlayerStats>();
             switch(ID)
             {
-                case 0:
-                    playerMovement.maxSpeed = 50;
+                case 1:
+                    playerStats.speedAltered = true;
+                    playerStats.maxSpeed = 60;
+                    //Debug.Log("Item used");
                     break;
             }
         }

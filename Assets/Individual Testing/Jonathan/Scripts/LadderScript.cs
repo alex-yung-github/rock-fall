@@ -40,21 +40,21 @@ public class LadderScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("something's here?");
+        
         if (collision.gameObject.CompareTag("Ladder"))
         {
             isInRange = true;
-            Debug.Log("ladder in range");
+            
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("something left?");
+      
         if (collision.gameObject.CompareTag("Ladder"))
         {
             isInRange = false;
             isClimbing = false;
-            Debug.Log("ladder not in range");
+           
         }
     }
 }
