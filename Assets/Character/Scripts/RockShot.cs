@@ -6,6 +6,7 @@ public class RockShot : MonoBehaviour
 {
     public Transform shootingPoint;
     public GameObject bulletPrefab;
+    public Inventory inventory;
     private int p_rock_bullets = 2;
     public bool canFire;
 
@@ -28,6 +29,14 @@ public class RockShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
+        if(inventory.inventoryEnabled)
+        {
+            canFire = false;
+        }
+        else
+        {
+            canFire = true;
+        }
         if (Input.GetMouseButtonDown(0) && p_rock_bullets > 0)
         {
             /*

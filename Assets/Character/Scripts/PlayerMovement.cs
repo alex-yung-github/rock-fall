@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private int maxSpeed;
 
     public PlayerStats playerStats;
-
+    public Inventory inventory;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if(inventory.inventoryEnabled)
+        {
+            return;
+        }
         maxSpeed = playerStats.maxSpeed;
         recoilForce = playerStats.recoilForce;
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -58,6 +62,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(inventory.inventoryEnabled)
+        {
+            return;
+        }
         rb.velocity = new Vector2(horizontal * speed + rb.velocity.x, rb.velocity.y);
         if(horizontal == 0)
         {
