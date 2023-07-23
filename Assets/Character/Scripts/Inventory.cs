@@ -6,7 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public GameObject player;
     public GameObject inventory;
-    private bool inventoryEnabled;
+    [HideInInspector] public bool inventoryEnabled;
 
     private GameObject[] slot;
     private int slotCount;
@@ -28,8 +28,12 @@ public class Inventory : MonoBehaviour
                 slot[i].GetComponent<Slot>().empty = true;
             }
         }
-        Item item = startingItem.GetComponent<Item>();
-        AddItem(startingItem, item.ID, item.type, item.description, item.icon);
+        if(startingItem)
+        {
+            Item item = startingItem.GetComponent<Item>();
+            AddItem(startingItem, item.ID, item.type, item.description, item.icon);
+        }
+        
     }
 
     // Update is called once per frame
@@ -43,12 +47,12 @@ public class Inventory : MonoBehaviour
         if(inventoryEnabled == true)
         {
             inventory.SetActive(true);
-            player.SetActive(false);
+            //player.SetActive(false);
         }
         else
         {
             inventory.SetActive(false);
-            player.SetActive(true);
+            //player.SetActive(true);
         }
     }
 
