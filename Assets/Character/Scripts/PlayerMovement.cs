@@ -37,7 +37,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if(inventory.inventoryEnabled)
         {
-            return;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
         }
         maxSpeed = playerStats.maxSpeed;
         recoilForce = playerStats.recoilForce;
@@ -64,10 +68,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(inventory.inventoryEnabled)
-        {
-            return;
-        }
         rb.velocity = new Vector2(horizontal * speed + rb.velocity.x, rb.velocity.y);
         if(horizontal == 0)
         {
