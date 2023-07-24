@@ -12,6 +12,22 @@ public class PlayerStats : MonoBehaviour
     private int defaultRecoilForce;
     [HideInInspector] public bool recoilAltered;
 
+    public int rockCooldown;
+    private int defaultRockCooldown;
+    [HideInInspector] public bool rockCooldownAltered;
+
+    public float jumpingPower;
+    private float defaultJumpingPower;
+    [HideInInspector] public bool jumpingPowerAltered;
+
+    public int health;
+    private int defaultHealth;
+    [HideInInspector] public bool healthAltered;
+
+    public int attack;
+    private int defaultAttack;
+    [HideInInspector] public bool attackAltered;
+
     void Start()
     {
         defaultMaxSpeed = maxSpeed;
@@ -19,6 +35,18 @@ public class PlayerStats : MonoBehaviour
 
         defaultRecoilForce = recoilForce;
         recoilAltered = false;
+
+        defaultRockCooldown = rockCooldown;
+        rockCooldownAltered = false;
+
+        defaultJumpingPower = jumpingPower;
+        jumpingPowerAltered = false;
+
+        defaultHealth = health;
+        healthAltered = false;
+
+        defaultAttack = attack;
+        attackAltered = false;
     }
 
     void Update()
@@ -30,6 +58,22 @@ public class PlayerStats : MonoBehaviour
         if(!recoilAltered)
         {
             recoilForce = defaultRecoilForce;
+        }
+        if(!rockCooldownAltered)
+        {
+            rockCooldown = defaultRockCooldown;
+        }
+        if(!jumpingPowerAltered)
+        {
+            jumpingPower = defaultJumpingPower;
+        }
+        if(!healthAltered)
+        {
+            health = defaultHealth;
+        }
+        if(!attackAltered)
+        {
+            attack = defaultAttack;
         }
     }
     

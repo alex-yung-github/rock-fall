@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class AttributesManager : MonoBehaviour
 {
-    public int maxHealth;
+    private int maxHealth;
     public int health;
     public int attack;
+
     public HealthBar healthBar;
+    public PlayerStats playerStats;
 
     void Start()
     {
+        maxHealth = playerStats.health;
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        
+        attack = playerStats.attack;
     }
+
     public void takeDamage(int amount)
     {
         health -= amount;

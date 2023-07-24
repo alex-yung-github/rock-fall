@@ -27,6 +27,18 @@ public class equipSlot : MonoBehaviour, IPointerClickHandler
                 case 2:
                     playerStats.recoilAltered = false;
                     break;
+                case 3:
+                    playerStats.rockCooldownAltered = false;
+                    break;
+                case 4:
+                    playerStats.jumpingPowerAltered = false;
+                    break;
+                case 5:
+                    playerStats.healthAltered = false;
+                    break;
+                case 6:
+                    playerStats.attackAltered = false;
+                    break;
             }
 
         empty = true;

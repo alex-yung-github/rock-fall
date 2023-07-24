@@ -26,6 +26,22 @@ public class Item : MonoBehaviour
                     playerStats.recoilAltered = true;
                     playerStats.recoilForce = 32;
                     break;
+                case 3:
+                    playerStats.rockCooldownAltered = true;
+                    playerStats.rockCooldown = 25;
+                    break;
+                case 4:
+                    playerStats.jumpingPowerAltered = true;
+                    playerStats.jumpingPower = 48f;
+                    break;
+                case 5:
+                    playerStats.healthAltered = true;
+                    playerStats.health = 200;
+                    break;
+                case 6:
+                    playerStats.attackAltered = true;
+                    playerStats.attack = 20;
+                    break;
             }
         }
     }

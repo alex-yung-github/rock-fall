@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
     private float speed = 8f;
-    private float jumpingPower = 24f;
+    private float jumpingPower;
     private Camera mainCam;
     private Vector3 mousePos;
     public RockShot rockShot;
@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         boostCounter = 0;
         maxSpeed = playerStats.maxSpeed;
         recoilForce = playerStats.recoilForce;
+        jumpingPower = playerStats.jumpingPower;
     }
 
     void Update()
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         }
         maxSpeed = playerStats.maxSpeed;
         recoilForce = playerStats.recoilForce;
+        jumpingPower = playerStats.jumpingPower;
         horizontal = Input.GetAxisRaw("Horizontal");
         if(Input.GetButtonDown("Jump") && IsGrounded())
         {
