@@ -13,10 +13,6 @@ public class Item : MonoBehaviour
     
     public void ItemUsage()
     {
-        if(type == "reset")
-        {
-
-        }
         if(type == "Charm")
         {
             playerStats = GameObject.FindGameObjectWithTag("Inventory").GetComponent<PlayerStats>();
@@ -24,8 +20,11 @@ public class Item : MonoBehaviour
             {
                 case 1:
                     playerStats.speedAltered = true;
-                    playerStats.maxSpeed = 60;
-                    //Debug.Log("Item used");
+                    playerStats.maxSpeed = 30;
+                    break;
+                case 2:
+                    playerStats.recoilAltered = true;
+                    playerStats.recoilForce = 32;
                     break;
             }
         }

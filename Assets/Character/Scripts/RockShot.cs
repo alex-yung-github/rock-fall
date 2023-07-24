@@ -60,7 +60,6 @@ public class RockShot : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Debug.Log(p_rock_bullets);
         if(p_rock_bullets == 0)
         {
             canFire = false;

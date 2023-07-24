@@ -47,12 +47,10 @@ public class Inventory : MonoBehaviour
         if(inventoryEnabled == true)
         {
             inventory.SetActive(true);
-            //player.SetActive(false);
         }
         else
         {
             inventory.SetActive(false);
-            //player.SetActive(true);
         }
     }
 

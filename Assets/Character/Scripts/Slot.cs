@@ -20,8 +20,17 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         if(type == "Charm")
         {
-            
             equipSlots = GameObject.FindGameObjectsWithTag("equipSlot");
+
+            foreach(GameObject slot in equipSlots)
+            {
+                if(slot.GetComponent<equipSlot>().ID == ID)
+                {
+                    Debug.Log("Item already equipped");
+                    return;
+                }
+            }
+            
             foreach(GameObject slot in equipSlots)
             {
                 //Debug.Log(slot.GetComponent<equipSlot>().empty);

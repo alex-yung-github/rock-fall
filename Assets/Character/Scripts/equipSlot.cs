@@ -7,13 +7,11 @@ using UnityEngine.EventSystems;
 public class equipSlot : MonoBehaviour, IPointerClickHandler
 {
     public GameObject item;
-    public GameObject placeholder;
     public int ID;
     public string type;
     public string description;
     public Sprite icon;
     public bool empty;
-    public bool active;
 
     public Transform slotIconGO;
 
@@ -25,15 +23,17 @@ public class equipSlot : MonoBehaviour, IPointerClickHandler
             {
                 case 1:
                     playerStats.speedAltered = false;
-                    //Debug.Log("Item unequipped");
+                    break;
+                case 2:
+                    playerStats.recoilAltered = false;
                     break;
             }
 
         empty = true;
-        item = placeholder;
+        item = null;
         ID = 0;
-        type = "reset";
-        description = "Resets Buffs";
+        type = "";
+        description = "";
         icon = null;
         UpdateSlot();
     }
@@ -41,19 +41,12 @@ public class equipSlot : MonoBehaviour, IPointerClickHandler
     {
         slotIconGO = transform.GetChild(0);
         empty = true;
-        active = false;
     }
 
     void Update()
     {
-        if(!empty && !active)
+        if(!empty)
         {
-            active = true;
-            item.GetComponent<Item>().ItemUsage();
-        }
-        if(empty && active)
-        {
-            active = false;
             item.GetComponent<Item>().ItemUsage();
         }
     }
