@@ -26,11 +26,16 @@ public class AttributesManager : MonoBehaviour
     }
     void Update()
     {
-        if(isPlayer && playerStats.health != maxHealth)
+        if(isPlayer)
         {
-            maxHealth = playerStats.health;
-            healthBar.SetMaxHealth(maxHealth);
-            healthBar.SetHealth(health);
+            attack = playerStats.attack;
+            if(playerStats.health != maxHealth)
+            {
+                maxHealth = playerStats.health;
+                healthBar.SetMaxHealth(maxHealth);
+                healthBar.SetHealth(health);
+            }
+            
         }
     }
     public void takeDamage(int amount)
