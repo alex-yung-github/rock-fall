@@ -26,7 +26,7 @@ public class Shooting : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
-        if(Input.GetMouseButtonDown(0) && rockShot.canFire)
+        if(Input.GetMouseButtonDown(0) && rockShot.inventoryOpen == false && rockShot.canFire)
         {
             var clone = Instantiate(bullet, bulletTransform.position, Quaternion.identity); //create bullet clone
             Destroy(clone, 5); //destroy it after 5 seconds

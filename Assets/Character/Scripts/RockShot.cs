@@ -9,6 +9,7 @@ public class RockShot : MonoBehaviour
     public Inventory inventory;
     private int p_rock_bullets = 2;
     public bool canFire;
+    [HideInInspector] public bool inventoryOpen;
 
     public GameObject frontArm;
     public GameObject backArm;
@@ -31,13 +32,13 @@ public class RockShot : MonoBehaviour
     { 
         if(inventory.inventoryEnabled)
         {
-            canFire = false;
+            inventoryOpen = true;
         }
         else
         {
-            canFire = true;
+            inventoryOpen = false;
         }
-        if (Input.GetMouseButtonDown(0) && p_rock_bullets > 0)
+        if (Input.GetMouseButtonDown(0) && p_rock_bullets > 0 && !inventoryOpen)
         {
             /*
             screenPosition = Input.mousePosition;
@@ -59,6 +60,7 @@ public class RockShot : MonoBehaviour
 
     public void FixedUpdate()
     {
+        Debug.Log(p_rock_bullets);
         if(p_rock_bullets == 0)
         {
             canFire = false;
@@ -69,6 +71,21 @@ public class RockShot : MonoBehaviour
                 backArm.SetActive(true);
                 p_rock_recharge_count = 0;
                 p_rock_bullets += 2;
+            }
+            else
+            {
+                p_rock_recharge_count += 1;
+            }
+        }
+        if(p_rock_bullets == 1)
+        {
+            canFire = true;
+            if(p_rock_recharge_count >= 50 && Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer))
+            {
+                frontArm.SetActive(true);
+                backArm.SetActive(true);
+                p_rock_recharge_count = 0;
+                p_rock_bullets += 1;
             }
             else
             {
