@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    public string title;
     public int ID;
     public string type;
     public string description;
     public Sprite icon;
+    public string price;
     public bool pickedUp;
     PlayerStats playerStats;
-    
+
+
     public void ItemUsage()
     {
         if(type == "Charm")

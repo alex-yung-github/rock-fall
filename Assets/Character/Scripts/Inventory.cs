@@ -65,7 +65,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void AddItem(GameObject itemObject, int itemID, string itemType, string itemDescription, Sprite itemIcon)
+    public void AddItem(GameObject itemObject, int itemID, string itemType, string itemDescription, Sprite itemIcon)
     {
         for(int i = 0; i < slotCount; i++)
         {
