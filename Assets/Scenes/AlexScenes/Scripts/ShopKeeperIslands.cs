@@ -13,14 +13,17 @@ public class ShopKeeper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerIsClose && Input.GetKeyDown("e") && otherPanelsUnactive()){
+        if(playerIsClose && Input.GetKeyDown("e") && otherPanelsUnactive() && player.GetComponent<PlayerMovement>().shopOpen == false)
+        {
             shopPanel.SetActive(true);
-            player.SetActive(false);
             activated = true;
+            player.GetComponent<PlayerMovement>().shopOpen = true;
+            player.GetComponent<RockShot>().canFire = false;
         }
-        else if(activated && Input.GetKeyDown("e") && shopPanel.activeInHierarchy){
+        else if (activated && Input.GetKeyDown("e") && shopPanel.activeInHierarchy) {
             shopPanel.SetActive(false);
-            player.SetActive(true);  
+            player.GetComponent<PlayerMovement>().shopOpen = false;
+            player.GetComponent<RockShot>().canFire = true;
         }
     }
 

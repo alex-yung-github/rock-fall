@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public PlayerStats playerStats;
     public Inventory inventory;
 
+    [HideInInspector] public bool shopOpen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(inventory.inventoryEnabled)
+        if(inventory.inventoryEnabled || shopOpen)
         {
             Time.timeScale = 0;
         }
