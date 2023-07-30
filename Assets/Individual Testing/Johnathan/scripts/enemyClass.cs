@@ -33,8 +33,7 @@ public class enemyClass : MonoBehaviour
     public GameObject pointA;
     public GameObject pointB;
     private Transform currentPoint;
-
-
+    private Transform pastPoint;
 
     public void Start()
     {
@@ -43,6 +42,7 @@ public class enemyClass : MonoBehaviour
         coll = GetComponent<Collider2D>();
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
         currentPoint = pointB.transform;
+        pastPoint = pointA.transform;
     }
 
     private void FixedUpdate()
@@ -84,7 +84,7 @@ public class enemyClass : MonoBehaviour
         RaycastHit2D isGrounded = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0, Vector2.down, 0.1f);
         // Direction Calculation
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
+        Vector2 force = rb.mass*rb.mass*direction * speed * Time.deltaTime;
 
         // Jump
         if (jumpEnabled && isGrounded)
@@ -136,22 +136,37 @@ public class enemyClass : MonoBehaviour
     {
         Debug.Log("HEHE");
         Vector2 point = currentPoint.position - transform.position;
-        if (currentPoint == pointB.transform)
+        
+        if (currentPoint == pointB.transform )
         {
-            rb.velocity = new Vector2(3, 0);
+            
+            rb.velocity = new Vector2(8, rb.velocity.y);
         }
-        else
+        else if (currentPoint == pointA.transform)
         {
-            rb.velocity = new Vector2(-3, 0);
+            rb.velocity = new Vector2(-8, rb.velocity.y);
         }
-
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
+        if (transform.position.x < pointA.transform.position.x)
+            {
+            Debug.Log("KEKE");
+            pastPoint = currentPoint;
+            currentPoint = pointB.transform;
+        }
+        else if (transform.position.x > pointB.transform.position.x)
         {
+            pastPoint = currentPoint;
             currentPoint = pointA.transform;
+
+        }
+        else if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
+        {
+            pastPoint = currentPoint;
+            currentPoint = pointB.transform;
         }
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
+        else if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
         {
+            pastPoint = currentPoint;
             currentPoint = pointB.transform;
         }
     }
