@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Inventory : MonoBehaviour
     public GameObject slotHolder;
     // Start is called before the first frame update
     public GameObject startingItem;
+    public GameObject startingItem2;
     
     void Start()
     {
@@ -31,7 +33,9 @@ public class Inventory : MonoBehaviour
         if(startingItem)
         {
             Item item = startingItem.GetComponent<Item>();
+            Item item2 = startingItem2.GetComponent<Item>();
             AddItem(startingItem, item.ID, item.type, item.description, item.icon);
+            AddItem(startingItem2, item2.ID, item2.type, item2.description, item2.icon);
         }
         
     }
@@ -71,21 +75,22 @@ public class Inventory : MonoBehaviour
         {
             if(slot[i].GetComponent<Slot>().empty)
             {
-                itemObject.GetComponent<Item>().pickedUp = true;
-                slot[i].GetComponent<Slot>().item = itemObject;
+                GameObject myItem = Instantiate(itemObject, new Vector3(0, 0, 0), Quaternion.identity);
+                myItem.GetComponent<Item>().pickedUp = true;
+                slot[i].GetComponent<Slot>().item = myItem;
                 slot[i].GetComponent<Slot>().icon = itemIcon;
                 slot[i].GetComponent<Slot>().type = itemType;
                 slot[i].GetComponent<Slot>().ID = itemID;
                 slot[i].GetComponent<Slot>().description = itemDescription;
 
-                itemObject.transform.parent = slot[i].transform;
-                itemObject.SetActive(false);
+                myItem.transform.parent = slot[i].transform;
+                myItem.SetActive(false);
 
                 slot[i].GetComponent<Slot>().UpdateSlot();
                 slot[i].GetComponent<Slot>().empty = false;
-            }
 
-            return; // i dont get why this goes here but tutorial guy said so
+                return;
+            }
         }
     }
 }

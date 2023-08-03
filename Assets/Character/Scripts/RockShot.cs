@@ -21,6 +21,7 @@ public class RockShot : MonoBehaviour
     private int p_rock_recharge_count;
     public RockBar rockBar;
     public PlayerStats playerStats;
+    public PlayerMovement playerMovement;
     private int maxCooldown;
 
     // Start is called before the first frame update
@@ -36,7 +37,7 @@ public class RockShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        if(inventory.inventoryEnabled)
+        if(inventory.inventoryEnabled || playerMovement.shopOpen)
         {
             inventoryOpen = true;
             rockBar.SetMaxCooldown(playerStats.rockCooldown);

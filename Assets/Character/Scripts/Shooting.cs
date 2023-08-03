@@ -9,6 +9,8 @@ public class Shooting : MonoBehaviour
     public GameObject bullet;
     public Transform bulletTransform;
     public RockShot rockShot;
+    public PlayerMovement playerMovement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,7 @@ public class Shooting : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
-        if(Input.GetMouseButtonDown(0) && rockShot.inventoryOpen == false && rockShot.canFire)
+        if(Input.GetMouseButtonDown(0) && rockShot.inventoryOpen == false && playerMovement.shopOpen == false && rockShot.canFire)
         {
             var clone = Instantiate(bullet, bulletTransform.position, Quaternion.identity); //create bullet clone
             Destroy(clone, 5); //destroy it after 5 seconds

@@ -29,6 +29,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
                     Debug.Log("Item already equipped");
                     return;
                 }
+                
             }
             
             foreach(GameObject slot in equipSlots)

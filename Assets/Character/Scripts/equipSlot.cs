@@ -60,6 +60,7 @@ public class equipSlot : MonoBehaviour, IPointerClickHandler
         if(!empty)
         {
             item.GetComponent<Item>().ItemUsage();
+            Debug.Log(item.GetComponent<Item>().title);
         }
     }
 
